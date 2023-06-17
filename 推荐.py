@@ -10,7 +10,7 @@ from sklearn.metrics.pairwise import cosine_similarity
 path=os.path.dirname(os.path.abspath(__file__))
 model_path=os.path.join(path,'learn.pkl')
 learn_inf =load_learner(model_path)
-data_df = pd.read_excel('data2.xlsx', usecols=(0,1,2,3,4), names=['user','user_id','location_id', 'location','score'])
+data_df = pd.read_excel('data2.xlsx', usecols=( 0,1,2,3,4), names=['user','user_id','location_id', 'location','score'])
 location_matrix = data_df.pivot_table(index='user_id', columns='location', values='score')
 
 
@@ -18,17 +18,7 @@ st.title("Recommended location App")
 st.write("Upload an image and the app will predict the corresponding label.")
 #上传文件
 uploaded_file=st.file_uploader("Choose an image...",type=["jpg","png","jpeg"])
-def recommend_movies(pred, data_df=data_df, location_matrix=location_matrix):
-        scores = pd.DataFrame(data_df.groupby('location')['score'].mean())
-        scores['number_of_scores'] = data_df.groupby('location')['score']
-        scores.sort_values('number_of_scores', ascending=False).head(10)
-        AFO_user_score = location_matrix[pred]
-        similar_to_air_force_one=location_matrix.corrwith(AFO_user_score)
-        corr_AFO = pd.DataFrame(similar_to_air_force_one, columns=['correlation'])
-        corr_AFO.dropna(inplace=True)
-        result=corr_AFO.sort_values(by='correlation', ascending=False)
-        similar_location_titles=result[1:4]
-        return similar_location_titles
+
 # If the user has uploaded an image
 if uploaded_file is not None:
     # Display the image
@@ -69,4 +59,13 @@ if uploaded_file is not None:
         pred='西开教堂'
         st.write(pred)
     st.title("The recommended location for you is：")
-    st.write(recommend_movies(similar_location_titles))
+    scores = pd.DataFrame(data_df.groupby('location')['score'].mean())
+    scores['number_of_scores'] = data_df.groupby('location')['score']
+    scores.sort_values('number_of_scores', ascending=False).head(10)
+    AFO_user_score = location_matrix[pred]
+    similar_to_air_force_one=location_matrix.corrwith(AFO_user_score)
+    corr_AFO = pd.DataFrame(similar_to_air_force_one, columns=['correlation'])
+    corr_AFO.dropna(inplace=True)
+    result=corr_AFO.sort_values(by='correlation', ascending=False)
+    similar_location_titles=result[1:4]
+    st.write(similar_location_titles)
