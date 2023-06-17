@@ -60,6 +60,8 @@ if uploaded_file is not None:
         pred='西开教堂'
         st.write(pred)
     st.title("The recommended location for you is：")
+    def recommend_movies(pred, data_df=data_df, location_matrix=location_matrix):
+    
     scores = pd.DataFrame(data_df.groupby('location')['score'].mean())
     scores['number_of_scores'] = data_df.groupby('location')['score']
     scores.sort_values('number_of_scores', ascending=False).head(10)
@@ -69,4 +71,6 @@ if uploaded_file is not None:
     corr_AFO.dropna(inplace=True)
     result=corr_AFO.sort_values(by='correlation', ascending=False)
     similar_location_titles=result[1:4]
+    
+    return similar_location_titles
     st.write(similar_location_titles)
