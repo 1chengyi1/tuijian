@@ -12,7 +12,8 @@ pathlib.PosixPath=pathlib.WindowsPath
 path=os.path.dirname(os.path.abspath(__file__))
 model_path=os.path.join(path,'learn.pkl')
 learn_inf =load_learner(model_path)
-
+data_df = pd.read_excel('data2.xlsx', usecols=( 0,1,2,3,4), names=['user','user_id','location_id', 'location','score'])
+location_matrix = data_df.pivot_table(index='user_id', columns='location', values='score')
 pathlib.PosixPath=temp
 
 st.title("Recommended location App")
@@ -60,8 +61,6 @@ if uploaded_file is not None:
         pred='西开教堂'
         st.write(pred)
     st.title("The recommended location for you is：")
-    data_df = pd.read_excel('data2.xlsx', usecols=( 0,1,2,3,4), names=['user','user_id','location_id', 'location','score'])
-    location_matrix = data_df.pivot_table(index='user_id', columns='location', values='score')
     scores = pd.DataFrame(data_df.groupby('location')['score'].mean())
     scores['number_of_scores'] = data_df.groupby('location')['score']
     scores.sort_values('number_of_scores', ascending=False).head(10)
