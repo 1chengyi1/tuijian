@@ -3,8 +3,6 @@ import os
 from fastai.vision.all import *
 
 import pathlib
-temp=pathlib.PosixPath
-pathlib.PosixPath=pathlib.WindowsPath
 
 path=os.path.dirname(os.path.abspath(__file__))
 model_path=os.path.join(path,'learn.pkl')
