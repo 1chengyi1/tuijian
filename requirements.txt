@@ -1,5 +1,5 @@
 fastai==2.7.12
-pandas==3.0.7
+pandas==3.6.3
 scikit_learn==1.2.2
 streamlit==1.23.1
 numpy==1.23.5
