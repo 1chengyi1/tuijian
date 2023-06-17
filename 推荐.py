@@ -13,7 +13,7 @@ model_path=os.path.join(path,'learn.pkl')
 learn_inf =load_learner(model_path)
 data_df = pd.read_excel('data2.xlsx', usecols=( 0,1,2,3,4), names=['user','user_id','location_id', 'location','score'])
 location_matrix = data_df.pivot_table(index='user_id', columns='location', values='score')
-pathlib.PosixPath=temp
+
 
 st.title("Recommended location App")
 st.write("Upload an image and the app will predict the corresponding label.")
