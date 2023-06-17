@@ -1,8 +1,6 @@
-import platform
 import pathlib
-plt = platform.system()
-if plt != 'Windows':
-  pathlib.WindowsPath = pathlib.PosixPath
+temp=pathlib.PosixPath
+pathlib.PosixPath=pathlib.WindowsPath
 
 import streamlit as st
 import os
