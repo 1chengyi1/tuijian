@@ -6,8 +6,7 @@ import pathlib
 import pandas as pd
 import numpy as np
 from sklearn.metrics.pairwise import cosine_similarity
-temp=pathlib.PosixPath
-pathlib.PosixPath=pathlib.WindowsPath
+
 
 path=os.path.dirname(os.path.abspath(__file__))
 model_path=os.path.join(path,'learn.pkl')
