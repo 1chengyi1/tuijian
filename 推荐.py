@@ -1,5 +1,5 @@
 import streamlit as st
-
+import os
 from fastai.vision.all import *
 
 import pathlib
@@ -8,9 +8,8 @@ import numpy as np
 from sklearn.metrics.pairwise import cosine_similarity
 temp=pathlib.PosixPath
 pathlib.PosixPath=pathlib.WindowsPath
-from pathlib import Path
-path= Path(__file__).resolve()
 
+path=os.path.dirname(os.path.abspath(__file__))
 model_path=os.path.join(path,'learn.pkl')
 learn_inf =load_learner(model_path)
 data_df = pd.read_excel('data2.xlsx', usecols=( 0,1,2,3,4), names=['user','user_id','location_id', 'location','score'])
