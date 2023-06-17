@@ -1,3 +1,9 @@
+import platform
+import pathlib
+plt = platform.system()
+if plt != 'Windows':
+  pathlib.WindowsPath = pathlib.PosixPath
+
 import streamlit as st
 import os
 from fastai.vision.all import *
