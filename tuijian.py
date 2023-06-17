@@ -1,6 +1,6 @@
 import pandas as pd
 from sklearn.metrics.pairwise import cosine_similarity
-data_df = pd.read_excel('data2.xlsx', usecols=( 0,1,2,3,4), names=['user','user_id','location_id', 'location','score'])
+data_df = pd.read_excel('data2.xlsx', usecols=(0,1,2,3,4), names=['user','user_id','location_id', 'location','score'])
 location_matrix = data_df.pivot_table(index='user_id', columns='location', values='score')
 def recommend_movies(pred, data_df=data_df, location_matrix=location_matrix):
         scores = pd.DataFrame(data_df.groupby('location')['score'].mean())
