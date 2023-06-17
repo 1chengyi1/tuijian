@@ -1,3 +1,5 @@
+scikit_learn==1.2.2
+openpyxl==2.6.3
 altair==4.2.2
 attrs==23.1.0
 blinker==1.6.2
