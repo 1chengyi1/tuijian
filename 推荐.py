@@ -10,7 +10,7 @@ from sklearn.metrics.pairwise import cosine_similarity
 path=os.path.dirname(os.path.abspath(__file__))
 model_path=os.path.join(path,'learn.pkl')
 learn_inf =load_learner(model_path)
-data_df = pd.read_excel('data2.xlsx', usecols=( 0,1,2,3,4), names=['user','user_id','location_id', 'location','score'])
+data_df = pd.read_excel('data2.xlsx', usecols=(0,1,2,3,4), names=['user','user_id','location_id', 'location','score'])
 location_matrix = data_df.pivot_table(index='user_id', columns='location', values='score')
 
 
