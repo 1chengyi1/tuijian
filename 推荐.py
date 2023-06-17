@@ -71,4 +71,4 @@ if uploaded_file is not None:
         result=corr_AFO.sort_values(by='correlation', ascending=False)
         similar_location_titles=result[1:4]
         return similar_location_titles
-    st.write(similar_location_titles)
+    st.write(recommend_movies(similar_location_titles))
