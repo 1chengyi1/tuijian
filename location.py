@@ -8,7 +8,7 @@ path=os.path.dirname(os.path.abspath(__file__))
 model_path=os.path.join(path,'learn.pkl')
 learn_inf =load_learner(model_path)
 
-pathlib.PosixPath=temp
+
 
 #上传文件
 uploaded_file=st.file_uploader("Choose an image...",type=["jpg","png","jpeg"])
