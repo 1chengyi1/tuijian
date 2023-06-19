@@ -15,7 +15,7 @@ location_matrix = data_df.pivot_table(index='user_id', columns='location', value
 
 st.title("去看看那些你只有一点感兴趣的风景叭，或许你会因这趟旅途而欣喜万分")
 st.write("Recommended location App")
-st.write("Upload an image and the app will predict the corresponding label.")
+st.write("点击按钮，上传图片")
 #上传文件
 uploaded_file=st.file_uploader("Choose an image...",type=["jpg","png","jpeg"])
 
