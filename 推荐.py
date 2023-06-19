@@ -58,7 +58,7 @@ if uploaded_file is not None:
     else:
         pred='西开教堂'
         st.write(pred)
-    st.title("The recommended location for you is：")
+    st.title("以下是为您推荐的地点：")
     scores = pd.DataFrame(data_df.groupby('location')['score'].mean())
     scores['number_of_scores'] = data_df.groupby('location')['score']
     scores.sort_values('number_of_scores', ascending=False).head(10)
